@@ -2,7 +2,7 @@ function createGrid(dimensions) {
     const container = document.querySelector('#container');
     container.style.gridTemplateRows = `repeat(${dimensions}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${dimensions}, 1fr)`;
-    for(i = 0; i < 256; i++) {
+    for(i = 0; i < Math.pow(dimensions, 2); i++) {
         gridItem = document.createElement('div');
         gridItem.id = i;
         //gridItem.classList.add('lineblock')
