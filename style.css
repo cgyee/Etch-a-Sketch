@@ -1,0 +1,17 @@
+ .grid {
+    /*Setting the dimensions of the canvas and location on screen*/
+    width: 600px;
+    height: 600px;
+    position: fixed;
+    margin: 5% auto auto 30%;
+    /*Making a grid and it rows and columns so its easier to color*/
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    border: 2px solid hsl(344, 100%, 60%)
+ }
+
+ .gridItem {
+   display: block;
+   background-color: white;
+ }
