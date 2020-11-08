@@ -4,10 +4,19 @@
 </head>
 <html>
     <body>
-        <div>
-            <button id="clearBtn">Clear Canvas</button>
+        <div id="container">
+            <div id="optionContainer">
+                <button id="clearBtn">Clear Canvas</button>
+                <button id="blackColorBtn">Basic Color</button>
+                <button id="randomColorBtn">Random Colors</button>
+                <button id="graytoBlack">Black</button>
+            </div>
+            <div class="EtchBox">
+                <div class="knobContainer"><img src="Images/Untitled.png" class="knob"></div>
+                <div id="gridContainer" class="grid"></div>
+                <div class="knobContainer"><img src="Images/Untitled.png" class="knob"></div>
+            </div>
         </div>
-        <div id="container" class="grid"></div>
     </body>
 </html>
 <script src="main.js"></script>

@@ -1,12 +1,16 @@
+let whitetoBlack = 0;
+
 function createGrid(dimensions) {
-    const container = document.querySelector('#container');
+    const container = document.querySelector('#gridContainer');
     container.style.gridTemplateRows = `repeat(${dimensions}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${dimensions}, 1fr)`;
     for(i = 0; i < Math.pow(dimensions, 2); i++) {
         gridItem = document.createElement('div');
         gridItem.id = i;
         //gridItem.classList.add('lineblock')
-        gridItem.addEventListener('mouseover', colorGridItem)
+        gridItem.addEventListener('mouseover', function(e) {
+            colorGridItem(this, getBlacKColor());
+        });
         gridItem.className = 'gridItem'
         container.appendChild(gridItem);
     }
@@ -48,12 +52,32 @@ function promptGridDimension() {
     
 }
 
-function colorGridItem(event) {
-    console.log(event);
-    this.style.backgroundColor = "black"; 
+function colorGridItem(ts, color) {
+    console.log(color)
+    ts.style.backgroundColor = color; 
 
 }
 
+function getBlacKColor() {
+    return "rgb(0, 0, 0)";
+}
+
+function getRandomColor() {
+    let color  = Math.floor(Math.random() * 360);
+    return `hsl(${color}, 100%, 50%)`;
+}
+
+function getwhitetoBlacktoBlack() {
+    if(whitetoBlack>=250) {
+        whitetoBlack=0;
+    }
+    whitetoBlack+=25;
+    return `rgb(${whitetoBlack}, ${whitetoBlack}, ${whitetoBlack})`;
+}
+
 createGrid(promptGridDimension())
-const btn = document.querySelector('#clearBtn');
-btn.addEventListener('click', clearGrid);
+const clearBtn = document.querySelector('#clearBtn');
+const blackColorBtn = document.querySelector('#blackColorBtn');
+const randomColorBtn = document.querySelector('#randomColorBtn');
+
+clearBtn.addEventListener('click', clearGrid);

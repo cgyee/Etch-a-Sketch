@@ -1,17 +1,51 @@
  .grid {
     /*Setting the dimensions of the canvas and location on screen*/
-    width: 600px;
-    height: 600px;
-    position: fixed;
-    margin: 5% auto auto 30%;
+    width: 700px;
+    height: 550px;
+    position: relative;
+    margin: auto;
+    z-index: 1;
     /*Making a grid and it rows and columns so its easier to color*/
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-    border: 2px solid hsl(344, 100%, 60%)
+    border-radius: 20px;
  }
 
  .gridItem {
    display: block;
    background-color: white;
+ }
+
+ .EtchBox {
+  width: 900px;
+  height: 700px;
+  background-color: hsl(344, 100%, 60%);
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  margin: 5% auto auto 25%;
+  z-index: 1;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+ }
+
+ .knobContainer {
+   align-self: flex-end;
+ }
+
+ .knob {
+   width: 60px;
+   height: 60px;
+ }
+
+ #container {
+   display: flex;
+   flex-direction: column;
+ }
+
+ #optionContainer {
+   display: flex;
+   flex-direction: row;
  }
