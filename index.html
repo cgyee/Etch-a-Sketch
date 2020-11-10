@@ -3,18 +3,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <html>
-    <body>
+    <body class="backgroundImg">
         <div id="container">
-            <div id="optionContainer">
-                <button id="clearBtn">Clear Canvas</button>
-                <button id="blackColorBtn">Basic Color</button>
-                <button id="randomColorBtn">Random Colors</button>
-                <button id="graytoBlack">Black</button>
-            </div>
-            <div class="EtchBox">
-                <div class="knobContainer"><img src="Images/Untitled.png" class="knob"></div>
+            <div id="EtchBox" class="EtchBox">
+                <div class="knobContainer">
+                    <img src="Images/Untitled.png" class="knob">
+                </div>
                 <div id="gridContainer" class="grid"></div>
-                <div class="knobContainer"><img src="Images/Untitled.png" class="knob"></div>
+                <div class="knobContainer">
+                    <img src="Images/Untitled.png" class="knob">
+                </div>
+            </div>
+            <div id="optionContainer">
+                <button id="clearBtn" class="optionButton">Clear Canvas</button>
+                <button id="blackColorBtn" class="optionButton">Black</button>
+                <button id="randomColorBtn" class="optionButton">Random Colors</button>
+                <button id="graytoBlackBtn" class="optionButton">GrayScale</button>
             </div>
         </div>
     </body>

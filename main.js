@@ -1,29 +1,5 @@
 let whitetoBlack = 0;
 
-function createGrid(dimensions) {
-    const container = document.querySelector('#gridContainer');
-    container.style.gridTemplateRows = `repeat(${dimensions}, 1fr)`;
-    container.style.gridTemplateColumns = `repeat(${dimensions}, 1fr)`;
-    for(i = 0; i < Math.pow(dimensions, 2); i++) {
-        gridItem = document.createElement('div');
-        gridItem.id = i;
-        //gridItem.classList.add('lineblock')
-        gridItem.addEventListener('mouseover', function(e) {
-            colorGridItem(this, getBlacKColor());
-        });
-        gridItem.className = 'gridItem'
-        container.appendChild(gridItem);
-    }
-}
-
-function clearGrid() {
-    let gridItems = document.querySelectorAll('.gridItem');
-    gridItems = Array.from(gridItems);
-    gridItems = gridItems.forEach(element => {
-        element.style.backgroundColor = "white";
-    });
-}
-
 function promptGridDimension() {
     keepGoing = true
     let dimensions; 
@@ -52,10 +28,50 @@ function promptGridDimension() {
     
 }
 
-function colorGridItem(ts, color) {
-    console.log(color)
-    ts.style.backgroundColor = color; 
+function createGrid(dimensions) {
+    const container = document.querySelector('#gridContainer');
+    container.style.gridTemplateRows = `repeat(${dimensions}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${dimensions}, 1fr)`;
+    for(i = 0; i < Math.pow(dimensions, 2); i++) {
+        gridItem = document.createElement('div');
+        gridItem.id = i;
+        gridItem.className = 'gridItem'
+        container.appendChild(gridItem);
+    }
+   updateColor("black");
+}
 
+function setColor(e, color) {
+    e.target.style.backgroundColor = color;
+}
+
+function updateColor(color) {
+    let gridItems = document.querySelectorAll('.gridItem');
+    gridItems = Array.from(gridItems);
+    gridItems = gridItems.forEach(element => {
+        switch(color){
+            case "random":
+                element.addEventListener('mouseover', function(e) {setColor(e, getRandomColor());});
+                break;
+            case "gray":
+                element.addEventListener('mouseover', function(e) {setColor(e, getwhitetoBlacktoBlack());});
+                break;
+            case "black":
+                element.addEventListener('mouseover', function(e) {setColor(e, getBlacKColor());});
+                break;
+            default:
+                element.addEventListener('mouseover', function(e) {setColor(e, getBlacKColor());});
+                break;
+        }
+    });
+}
+
+function clearGrid() {
+    let gridItems = document.querySelectorAll('.gridItem');
+    gridItems = Array.from(gridItems);
+    gridItems = gridItems.forEach(element => {
+        element.style.backgroundColor = "white";
+    });
 }
 
 function getBlacKColor() {
@@ -64,20 +80,26 @@ function getBlacKColor() {
 
 function getRandomColor() {
     let color  = Math.floor(Math.random() * 360);
+    console.log(`hsl(${color}, 100%, 50%)`)
     return `hsl(${color}, 100%, 50%)`;
 }
 
 function getwhitetoBlacktoBlack() {
-    if(whitetoBlack>=250) {
-        whitetoBlack=0;
+    if(whitetoBlack<=0) {
+        whitetoBlack=255;
     }
-    whitetoBlack+=25;
+    whitetoBlack-=25;
     return `rgb(${whitetoBlack}, ${whitetoBlack}, ${whitetoBlack})`;
 }
 
-createGrid(promptGridDimension())
+createGrid(64)
+
 const clearBtn = document.querySelector('#clearBtn');
 const blackColorBtn = document.querySelector('#blackColorBtn');
 const randomColorBtn = document.querySelector('#randomColorBtn');
+const graytoBlackBtn = document.querySelector('#graytoBlackBtn');
 
 clearBtn.addEventListener('click', clearGrid);
+blackColorBtn.addEventListener('click', function(e) {updateColor("black")});
+randomColorBtn.addEventListener('click', function(e) {updateColor("random")});
+graytoBlackBtn.addEventListener('click', function(e) {updateColor("gray")});
