@@ -1,30 +1,34 @@
+ .backgroundImg {
+   background-image: url("Images/halftone-yellow.png");
+ }
+
  .grid {
     /*Setting the dimensions of the canvas and location on screen*/
-    width: 700px;
+    width: 600px;
     height: 550px;
     position: relative;
-    margin: auto;
+    margin: 30px auto auto auto;
     z-index: 1;
     /*Making a grid and it rows and columns so its easier to color*/
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-    border-radius: 20px;
  }
 
  .gridItem {
    display: block;
-   background-color: white;
+   background-color: hsl(44, 44%, 91%);
+   border: .25px solid hsl(0, 0%, 90%);
  }
 
  .EtchBox {
-  width: 900px;
+  width: 800px;
   height: 700px;
   background-color: hsl(344, 100%, 60%);
   display: flex;
   flex-direction: row;
-  position: fixed;
-  margin: 5% auto auto 25%;
+  position: relative;
+  margin: 8% 3% auto 30%;
   z-index: 1;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -33,19 +37,131 @@
 
  .knobContainer {
    align-self: flex-end;
+   margin: 0px 10px 20px 10px
  }
 
  .knob {
    width: 60px;
    height: 60px;
+
  }
 
- #container {
-   display: flex;
-   flex-direction: column;
- }
+.optionButton {
+  width: 300px;
+  height: 30px;
+  border-radius: 11px;
+  border:2px solid hsl(224, 69%, 50%);
+  justify-self: center;
+  background-color: hsl(0, 0%, 93%);
+  color: hsl(45, 90%, 50%);
+}
 
- #optionContainer {
-   display: flex;
-   flex-direction: row;
- }
+button#clearBtn.optionButton:hover {
+  animation-name: toWhite;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+button#blackColorBtn.optionButton:hover {
+  animation-name: toBlack;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+button#randomColorBtn.optionButton:hover {
+  animation-name: randomColor;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+button#graytoBlackBtn.optionButton:hover {
+  animation-name: graytoBlack;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes toWhite {
+
+  50% {
+    background-color: hsl(0, 50%, 90%);
+  }
+
+  100% {
+    background-color: hsl(0, 0%, 100%);
+    transform: scale(1.1);
+    color: hsl(235, 77%, 36%);
+  }
+}
+
+@keyframes toBlack {
+  50% {
+    background-color: hsl(0, 0%, 18%);
+  }
+
+  100% {
+    transform: scale(1.1);
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(45, 90%, 50%);
+  }
+}
+
+@keyframes randomColor {
+  50% {
+    background-color: hsl(271, 69%, 50%);
+    transform: scale(1.05);
+    color: hsl(0, 0%, 90%);
+  }
+
+  75% {
+    background-color: hsl(224, 69%, 50%);;
+  }
+
+
+  100% {
+    background-color: hsl(115, 69%, 50%);
+    transform: scale(1.1);
+    color: hsl(0, 0%, 100%);
+  }
+}
+
+@keyframes graytoBlack {
+  33% {
+    background-color:  hsl(0, 0%, 43%);;
+  }
+  
+  66% {
+    background-color: hsl(0, 0%, 19%);
+  }
+
+  100% {
+    transform: scale(1.1);
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(45, 90%, 50%);
+  }
+}
+
+.mainFooter {
+  margin: 10% auto;
+}
+
+.mainHeader {
+  margin: 5% auto 0 auto;
+  font-size: 5%;
+  width: fit-content;
+  font-size: 200px;
+}
+#container {
+  display: flex;
+}
+
+#optionContainer {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, 20px);
+  margin: 15% 35% 0 0;
+  row-gap: 50px;
+}
+
+#optionInput {
+  text-align: center;
+}
