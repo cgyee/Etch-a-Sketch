@@ -1,11 +1,10 @@
 let whitetoBlack = 0;
+let userInput = document.getElementById("optionInput");
 
 function promptGridDimension() {
     keepGoing = true
-    let dimensions; 
-
     while(keepGoing) {
-        dimensions = parseInt(prompt("Please enter the the grid size less than 100 that you would like to use: "));
+    let dimensions = parseInt(prompt("Please enter the the grid size less than 100 that you would like to use: "));
         if(!(Number.isNaN(dimensions))) {
             if(dimensions <= 0) {
                 alert("Please use a number > 0");
@@ -28,7 +27,42 @@ function promptGridDimension() {
     
 }
 
+function checkInputValue(e) {
+    keepGoing = true;
+    while(keepGoing) {
+        if(!(Number.isNaN(e.target.value))) {
+            if(e.target.value <= 0) {
+                alert("Please use a number > 0");
+                e.target.value = 1
+            }
+    
+            else if(e.target.value >= 100) {
+                alert("Please use a grid size < 100");
+                e.target.value = 99
+            }
+
+            else {
+                keepGoing = false;
+            }
+            
+        }
+        else {
+            alert("Please enter a valid number")
+        }
+    }
+    return true;
+}
+
+function setInputListner() {
+     userInput.addEventListener('click', setGridDimensions);
+     userInput.addEventListener('focus', setGridDimensions);
+}
+
+function setGridDimensions(e) {
+    if(checkInputValue(e)){ createGrid(e.target.value); }
+}
 function createGrid(dimensions) {
+    
     const container = document.querySelector('#gridContainer');
     container.style.gridTemplateRows = `repeat(${dimensions}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${dimensions}, 1fr)`;
@@ -92,7 +126,7 @@ function getwhitetoBlacktoBlack() {
     return `rgb(${whitetoBlack}, ${whitetoBlack}, ${whitetoBlack})`;
 }
 
-createGrid(64)
+createGrid(document.getElementById("optionInput").value);
 
 const clearBtn = document.querySelector('#clearBtn');
 const blackColorBtn = document.querySelector('#blackColorBtn');
@@ -103,3 +137,4 @@ clearBtn.addEventListener('click', clearGrid);
 blackColorBtn.addEventListener('click', function(e) {updateColor("black")});
 randomColorBtn.addEventListener('click', function(e) {updateColor("random")});
 graytoBlackBtn.addEventListener('click', function(e) {updateColor("gray")});
+setInputListner();

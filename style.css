@@ -74,6 +74,12 @@ button#randomColorBtn.optionButton:hover {
   animation-fill-mode: forwards;
 }
 
+button#graytoBlackBtn.optionButton:hover {
+  animation-name: graytoBlack;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
 @keyframes toWhite {
 
   50% {
@@ -118,6 +124,22 @@ button#randomColorBtn.optionButton:hover {
   }
 }
 
+@keyframes graytoBlack {
+  33% {
+    background-color:  hsl(0, 0%, 43%);;
+  }
+  
+  66% {
+    background-color: hsl(0, 0%, 19%);
+  }
+
+  100% {
+    transform: scale(1.1);
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(45, 90%, 50%);
+  }
+}
+
 #container {
   display: flex;
 }
@@ -128,4 +150,8 @@ button#randomColorBtn.optionButton:hover {
   grid-template-rows: repeat(4, 20px);
   margin: 15% 35% 0 0;
   row-gap: 50px;
+}
+
+#optionInput {
+  text-align: center;
 }
