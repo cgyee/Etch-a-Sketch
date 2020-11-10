@@ -1,5 +1,6 @@
 let whitetoBlack = 0;
 let userInput = document.getElementById("optionInput");
+userInput.value = 16;
 
 function promptGridDimension() {
     keepGoing = true
@@ -33,12 +34,14 @@ function checkInputValue(e) {
         if(!(Number.isNaN(e.target.value))) {
             if(e.target.value <= 0) {
                 alert("Please use a number > 0");
-                e.target.value = 1
+                e.target.value = 16
+                createGrid(16)
             }
     
             else if(e.target.value >= 100) {
                 alert("Please use a grid size < 100");
-                e.target.value = 99
+                e.target.value = 16
+                createGrid(16)
             }
 
             else {
@@ -54,12 +57,11 @@ function checkInputValue(e) {
 }
 
 function setInputListner() {
-     userInput.addEventListener('click', setGridDimensions);
      userInput.addEventListener('focus', setGridDimensions);
 }
 
 function setGridDimensions(e) {
-    if(checkInputValue(e)){ createGrid(e.target.value); }
+    if(checkInputValue(e)){ clearGrid(); }
 }
 function createGrid(dimensions) {
     
@@ -68,7 +70,6 @@ function createGrid(dimensions) {
     container.style.gridTemplateColumns = `repeat(${dimensions}, 1fr)`;
     for(i = 0; i < Math.pow(dimensions, 2); i++) {
         gridItem = document.createElement('div');
-        gridItem.id = i;
         gridItem.className = 'gridItem'
         container.appendChild(gridItem);
     }
@@ -101,11 +102,11 @@ function updateColor(color) {
 }
 
 function clearGrid() {
-    let gridItems = document.querySelectorAll('.gridItem');
-    gridItems = Array.from(gridItems);
-    gridItems = gridItems.forEach(element => {
-        element.style.backgroundColor = "white";
-    });
+    const container = document.querySelector('#gridContainer');
+    while(container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    createGrid(userInput.value)
 }
 
 function getBlacKColor() {

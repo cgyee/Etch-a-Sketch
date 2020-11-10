@@ -140,6 +140,16 @@ button#graytoBlackBtn.optionButton:hover {
   }
 }
 
+.mainFooter {
+  margin: 10% auto;
+}
+
+.mainHeader {
+  margin: 5% auto 0 auto;
+  font-size: 5%;
+  width: fit-content;
+  font-size: 200px;
+}
 #container {
   display: flex;
 }
