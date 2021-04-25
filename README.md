@@ -2,7 +2,7 @@
 The purpose of this project was to test my DOM manipulation abilities and implementation
 **Link to project:** https://cgyee.github.io/Etch-a-Sketch/
 
-![alt tag](./Etch-a-Sketch.PNG)
+![alt tag](./Capture.PNG)
 
 ## How It's Made:
 
