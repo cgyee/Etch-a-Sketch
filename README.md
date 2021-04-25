@@ -1,4 +1,4 @@
-#Etech a Sketch!
+##Etech a Sketch!
 The purpose of this project was to test my DOM manipulation abilities and implementation
 **Link to project:** https://cgyee.github.io/Etch-a-Sketch/
 
